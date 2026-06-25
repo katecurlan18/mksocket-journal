@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再度相遇 · 麻将胡了 知识导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, 'Noto Serif SC', 'Source Han Serif SC', Georgia, 'Times New Roman', serif;
+            background-color: #faf8f4;
+            color: #2f2e2b;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+        }
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 顶部导航 —— 轻量克制 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.8rem 0 1rem;
+            border-bottom: 1px solid #e2dbd1;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .site-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #5e5347;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #4f4940;
+            font-size: 0.9rem;
+            font-weight: 400;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+            padding-bottom: 2px;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #b09a82;
+            color: #2f2e2b;
+        }
+
+        /* hero —— 再次问候 */
+        .hero {
+            margin: 3rem 0 2.5rem;
+            padding: 1.2rem 0;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            color: #3d3832;
+            letter-spacing: 4px;
+            margin-bottom: 0.6rem;
+        }
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #6a6158;
+            max-width: 620px;
+            border-left: 3px solid #dacfc0;
+            padding-left: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 正文 / 卡片式模块 */
+        .intro-block {
+            background: #ffffffec;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 2.2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 0 0 1px #ede8e0 inset;
+        }
+        .intro-block p {
+            margin-bottom: 1.2rem;
+        }
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #7e6d5b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cfc0ae;
+            transition: background 0.15s;
+        }
+        .inline-link:hover {
+            background: #f3ede5;
+            border-bottom-color: #8f7b66;
+        }
+
+        /* 三个场景模块 —— 使用卡片网格 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        @media (max-width: 780px) {
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+        .scene-card {
+            background: #fffcf9;
+            border-radius: 20px;
+            padding: 1.6rem 1.5rem 1.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 0 0 1px #e7e0d6;
+            transition: box-shadow 0.15s, transform 0.1s;
+        }
+        .scene-card:hover {
+            box-shadow: 0 6px 16px rgba(80, 60, 40, 0.06), 0 0 0 1px #cfbeab;
+            transform: translateY(-2px);
+        }
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 490;
+            color: #4e443a;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid #cbb7a3;
+            padding-left: 0.7rem;
+        }
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #544e47;
+        }
+
+        /* 引用 / 提示框 */
+        .insight-box {
+            background: #f3eee8;
+            border-radius: 18px;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #b79f87;
+            font-style: normal;
+        }
+        .insight-box p {
+            margin-bottom: 0.4rem;
+        }
+        .insight-box strong {
+            color: #4d3d31;
+            font-weight: 550;
+        }
+
+        /* 常见说明（faq摘要） */
+        .faq-mini {
+            margin: 2.8rem 0 1.8rem;
+        }
+        .faq-mini h2 {
+            font-size: 1.3rem;
+            font-weight: 450;
+            color: #3d3832;
+            border-bottom: 1px solid #d9cfc3;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+            padding-left: 0.2rem;
+        }
+        .faq-question {
+            font-weight: 520;
+            color: #4d4238;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .faq-item p {
+            color: #5d554c;
+            margin-left: 0.8rem;
+            border-left: 2px solid #dacfc0;
+            padding-left: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* 收藏 / 持续关注 */
+        .bookmark-note {
+            margin: 2rem 0 0.6rem;
+            padding: 1.2rem 1.8rem;
+            background: #f4efe9;
+            border-radius: 40px 12px 12px 40px;
+            display: inline-block;
+            font-size: 0.95rem;
+            border: 1px solid #ded3c6;
+        }
+        .bookmark-note span {
+            background: #e6dacd;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-right: 0.3rem;
+            font-size: 0.85rem;
+            color: #3f372f;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e2dbd1;
+            font-size: 0.85rem;
+            color: #6f665d;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="site-title">⛩️ 麻将胡了·志</span>
+        <div class="nav-links">
+            <a href="#">再读</a>
+            <a href="#">规则</a>
+            <a href="#">收藏</a>
+        </div>
+    </nav>
+
+    <!-- hero：再次访问的语境 -->
+    <div class="hero">
+        <h1>再次相遇</h1>
+        <div class="subhead">每一次重读，都是与牌理更深的默契。持续关注的玩家，总会在细节中发现新的章法。</div>
+    </div>
+
+    <!-- 核心介绍段落：自然嵌入链接 -->
+    <div class="intro-block">
+        <p>对于反复回访的爱好者而言，<a href="https://china-webs-mahjong.com" class="inline-link">麻将胡了</a> 早已不只是一个名词——它成为了一种持续对话的场域。每次打开页面，既是对既有认知的确认，也是对排列组合的重新审视。从手牌效率到听牌概率，从防守牵制到和牌路径，这座数字站点沉淀了许多值得细品的牌理笔记。</p>
+        <p>如果你此前曾匆匆浏览，不妨再次驻足。站内围绕“胡牌逻辑”与“牌局节奏”整理了一系列知识卡片，尤其适合那些希望摆脱运气依赖、建立自己打牌框架的玩家。持续访问，也是在持续校准自己的判断模型。</p>
+    </div>
+
+    <!-- 三个场景模块：收藏、回顾、延伸 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3>📌 收藏夹常驻</h3>
+            <p>将页面加入书签，等于为自己保留一处随时可翻阅的牌理注释站。下次组局前快速扫一眼，思路会清晰很多。</p>
+        </div>
+        <div class="scene-card">
+            <h3>🔁 复盘时回顾</h3>
+            <p>打完一局，翻开对应条目对照——哪一手拆搭可以更优，哪一次弃牌损失了潜在听牌。反复回看会内化成直觉。</p>
+        </div>
+        <div class="scene-card">
+            <h3>🌱 持续关注</h3>
+            <p>站点不定期补充进阶内容：流局策略、读牌技巧、点数管理。保持关注，让知识更新与牌龄同步增长。</p>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框：知识型语气 -->
+    <div class="insight-box">
+        <p><strong>小提示</strong> 收藏 ≠ 拥有。真正让知识生效的方式是“周期性回访”。哪怕每月只重读一个章节，也比一次性囤积更有价值。下次打开 <a href="https://china-webs-mahjong.com" class="inline-link" style="border-bottom: 1px dashed #b79f87;">麻将胡了</a> 时，试着带着具体问题去读，你会发现自己对牌型的敏感度正在悄然提升。</p>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-mini">
+        <h2>常见疑问 · 摘要</h2>
+        <div class="faq-item">
+            <span class="faq-question">❓ “再次访问”能带来什么不同？</span>
+            <p>初次阅读往往只留意大原则，回访时却能注意到细微的条件分支。同一篇关于“一向听”的文章，第二次读可能发现之前忽略的复合搭子处理方式。</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">❓ 是否需要每天登录？</span>
+            <p>不必刻意。节奏上建议每打完几次牌或者遇到瓶颈时回来翻翻，让知识和实践交替推进。持续关注的意义在于“适时出现”，而非频率。</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">❓ 内容偏向理论还是实战？</span>
+            <p>整体介于两者之间。既有抽象牌理拆解，也有具体牌例注释。适合既想理解逻辑、又需要实例印证的读者。</p>
+        </div>
+    </div>
+
+    <!-- 收藏 / 持续关注 提示条 -->
+    <div class="bookmark-note">
+        <span>📖 常读常新</span> 如果你觉得内容有价值，不妨现在就将本站加入收藏夹。下次再访时，你会看到一个更熟悉的自己。
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>✏️ 内容保持适度更新 · 无需订阅</span>
+        <span>⏳ 上次 revisiting 2025.03</span>
+    </div>
+
+</div>
+</body>
+</html>
